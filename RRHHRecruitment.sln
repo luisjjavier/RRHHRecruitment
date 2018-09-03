@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRHHRecruitment.Forms", "RRHHRecruitment.Forms\RRHHRecruitment.Forms.csproj", "{B2E85ECF-0C7B-42E9-8361-BBF53E031EC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRHHRecruitment.Forms", "src\RRHHRecruitment.Forms\RRHHRecruitment.Forms.csproj", "{B2E85ECF-0C7B-42E9-8361-BBF53E031EC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRHHRecruitment.Core", "src\RRHHRecruitment.Core\RRHHRecruitment.Core.csproj", "{C87442B6-AE2C-4F51-8017-0983B47AE6B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RRHHRecruitment.Persistence", "src\RRHHRecruitment.Persistence\RRHHRecruitment.Persistence.csproj", "{48C62E13-E0E1-40F1-8205-E0076786A5C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B2E85ECF-0C7B-42E9-8361-BBF53E031EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E85ECF-0C7B-42E9-8361-BBF53E031EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2E85ECF-0C7B-42E9-8361-BBF53E031EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87442B6-AE2C-4F51-8017-0983B47AE6B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87442B6-AE2C-4F51-8017-0983B47AE6B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87442B6-AE2C-4F51-8017-0983B47AE6B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87442B6-AE2C-4F51-8017-0983B47AE6B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C62E13-E0E1-40F1-8205-E0076786A5C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C62E13-E0E1-40F1-8205-E0076786A5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C62E13-E0E1-40F1-8205-E0076786A5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C62E13-E0E1-40F1-8205-E0076786A5C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

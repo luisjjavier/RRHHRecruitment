@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using RRHHRecruitment.Forms.Screens;
+using RRHHRecruitment.Persistence;
+using System;
 using System.Windows.Forms;
+using Unity;
 
 namespace RRHHRecruitment.Forms
 {
@@ -14,9 +14,12 @@ namespace RRHHRecruitment.Forms
         [STAThread]
         static void Main()
         {
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<RecruitmentContext>();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(container.Resolve<MainForm>());
         }
     }
 }
