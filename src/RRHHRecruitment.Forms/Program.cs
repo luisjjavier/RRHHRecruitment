@@ -14,12 +14,18 @@ namespace RRHHRecruitment.Forms
         [STAThread]
         static void Main()
         {
-            IUnityContainer container = new UnityContainer();
-            container.RegisterType<RecruitmentContext>();
+            var container = Bootstrap();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(container.Resolve<MainForm>());
+        }
+
+        private static IUnityContainer Bootstrap()
+        {
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<RecruitmentContext>();
+            return container;
         }
     }
 }
