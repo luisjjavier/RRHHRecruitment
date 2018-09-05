@@ -21,6 +21,12 @@ namespace RRHHRecruitment.Persistence
 
         internal DbSet<Competition> Competitions { get; set; }
 
+        internal DbSet<Language> Languages { get; set; }
+
+        internal DbSet<Training> Trainings { get; set; }
+
+        internal DbSet<Job> Jobs { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -43,7 +43,14 @@
   <ItemGroup>
     <Compile Include="Contracts\IEntityBase.cs" />
     <Compile Include="Contracts\Repositories\IGenericRepository.cs" />
+    <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Competition.cs" />
+    <Compile Include="Models\Enums\AcademicLevel.cs" />
+    <Compile Include="Models\Enums\RiskLevel.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Language.cs" />
+    <Compile Include="Models\Training.cs" />
+    <Compile Include="Models\WorkExperience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
