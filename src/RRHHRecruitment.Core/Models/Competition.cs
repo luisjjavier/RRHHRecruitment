@@ -1,4 +1,5 @@
-﻿using RRHHRecruitment.Core.Contracts;
+﻿using System.Collections.Generic;
+using RRHHRecruitment.Core.Contracts;
 
 namespace RRHHRecruitment.Core.Models
 {
@@ -21,5 +22,7 @@ namespace RRHHRecruitment.Core.Models
         /// Indicates if this competition is active
         /// </summary>
         public bool IsActive { get; set; }
+
+        public ISet<Candidate> Candidates { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using RRHHRecruitment.Core.Contracts;
+﻿using System.Collections.Generic;
+using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Models.Enums;
 
 namespace RRHHRecruitment.Core.Models
@@ -36,6 +37,10 @@ namespace RRHHRecruitment.Core.Models
         /// <summary>
         /// Indicates if is active
         /// </summary>
-        public string IsActive { get; set; }
+        public bool IsActive { get; set; }
+
+        public ISet<Candidate> Candidates { get; set; }
+
+        public ISet<Employee> Employees { get; set; }
     }
 }

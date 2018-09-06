@@ -1,6 +1,7 @@
 ﻿using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Models.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace RRHHRecruitment.Core.Models
 {
@@ -33,5 +34,9 @@ namespace RRHHRecruitment.Core.Models
         /// An institution that where it was made
         /// </summary>
         public string Institution { get; set; }
+
+        public int CandidateId { get; set; }
+
+        public ISet<Candidate> Candidates { get; set; }
     }
 }

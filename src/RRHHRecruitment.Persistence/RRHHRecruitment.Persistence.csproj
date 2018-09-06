@@ -48,10 +48,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitiesConfigurations\CandidatesConfiguration.cs" />
     <Compile Include="EntitiesConfigurations\CompetitionsConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\EmployeesConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\LanguagesConfiguration.cs" />
+    <Compile Include="EntitiesConfigurations\UsersConfigurations.cs" />
     <Compile Include="Migrations\201809031609057_InitialTable.cs" />
     <Compile Include="Migrations\201809031609057_InitialTable.Designer.cs">
       <DependentUpon>201809031609057_InitialTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809062229581_RestOfTables.cs" />
+    <Compile Include="Migrations\201809062229581_RestOfTables.Designer.cs">
+      <DependentUpon>201809062229581_RestOfTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809062233284_MoreTables.cs" />
+    <Compile Include="Migrations\201809062233284_MoreTables.Designer.cs">
+      <DependentUpon>201809062233284_MoreTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +82,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809031609057_InitialTable.resx">
       <DependentUpon>201809031609057_InitialTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809062229581_RestOfTables.resx">
+      <DependentUpon>201809062229581_RestOfTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809062233284_MoreTables.resx">
+      <DependentUpon>201809062233284_MoreTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

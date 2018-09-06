@@ -27,6 +27,14 @@ namespace RRHHRecruitment.Persistence
 
         internal DbSet<Job> Jobs { get; set; }
 
+        internal DbSet<User> Users { get; set; }
+
+        internal DbSet<Employee> Employees { get; set; }
+
+        internal DbSet<WorkExperience> WorkExperiences { get; set; }
+
+        internal DbSet<Candidate> Candidates { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -34,6 +42,10 @@ namespace RRHHRecruitment.Persistence
             modelBuilder.Properties<string>().Configure(str => str.HasColumnType("varchar").HasMaxLength(500));
 
             modelBuilder.Configurations.Add(new CompetitionsConfiguration());
+            modelBuilder.Configurations.Add(new UsersConfigurations());
+            modelBuilder.Configurations.Add(new EmployeesConfiguration());
+            modelBuilder.Configurations.Add(new CandidatesConfiguration());
+            modelBuilder.Configurations.Add(new LanguagesConfiguration());
         }
     }
 }

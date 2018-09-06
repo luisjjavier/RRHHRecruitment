@@ -37,5 +37,15 @@ namespace RRHHRecruitment.Core.Models
         ///  Represents salary
         /// </summary>
         public double Salary { get; set; }
+
+        /// <summary>
+        /// Represents a candidate id
+        /// </summary>
+        public int CandidateId { get; set; }
+
+        /// <summary>
+        /// Represents a candidate
+        /// </summary>
+        public Candidate Candidate { get; set; }
     }
 }
