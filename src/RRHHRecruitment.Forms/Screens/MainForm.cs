@@ -1,104 +1,60 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using MetroFramework;
+using Unity;
+using RRHHRecruitment.Core.Models;
+using RRHHRecruitment.Core.Models.Enums;
 
 namespace RRHHRecruitment.Forms.Screens
 {
-    public sealed partial class MainForm : Form
+    public sealed partial class MainForm : MetroForm
     {
-        private int childFormNumber = 0;
+        private readonly IUnityContainer _container;
 
-        public MainForm()
+        public MainForm(IUnityContainer container)
         {
+            _container = container;
             InitializeComponent();
+
+            LoadUserData();
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
+        private void LoadUserData()
         {
-            Form childForm = new Form
-            {
-                MdiParent = this,
-                Text = "Window " + childFormNumber++
-            };
-            childForm.Show();
+            User user = Program.CurrentUser;
+
+            UsernameToolStrip.Text = $@"Nombre de usuario: {user.Username}";
+            RoleToolStrip.Text = $@"Role: {translateRoleType[user.RoleType]}";
         }
 
-        private void OpenFile(object sender, EventArgs e)
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+          DialogResult dialogResult =    MetroMessageBox.Show(this, "Está seguro que desea salir de la aplicación?", "Cerrar sesión",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.Yes)
             {
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal),
-                Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*"
-            };
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
+                Application.Exit();
             }
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private Dictionary<RoleType, string> translateRoleType  = new Dictionary<RoleType, string>()
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
+            [RoleType.Admin] = "Administrador",
+            [RoleType.Candidates]  = "Candidatos",
+            [RoleType.HumanResources] = "Recursos Humanos"
+        };
 
-        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
+        private void gestionDeIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
+            Form languageForm  =  Application.OpenForms["LanguageForm"] ?? _container.Resolve<LanguageForm>();
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            statusStrip.Visible = statusBarToolStripMenuItem.Checked;
-        }
-
-        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
-        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form childForm in MdiChildren)
-            {
-                childForm.Close();
-            }
+            languageForm.MdiParent = this;
+            languageForm.Show();
+            languageForm.Focus();
         }
     }
 }
