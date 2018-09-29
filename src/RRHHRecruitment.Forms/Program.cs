@@ -8,6 +8,7 @@ using RRHHRecruitment.Persistence.Repositories;
 using Unity;
 using RRHHRecruitment.Core.Models;
 using RRHHRecruitment.Core.Models.Enums;
+using Unity.Lifetime;
 
 namespace RRHHRecruitment.Forms
 {
@@ -56,7 +57,8 @@ namespace RRHHRecruitment.Forms
         private static IUnityContainer Bootstrap()
         {
             IUnityContainer container = new UnityContainer();
-            container.RegisterType<RecruitmentContext>();
+            RecruitmentContext recruitmentContext = new RecruitmentContext();
+            container.RegisterInstance(recruitmentContext);
             container.RegisterType<IUsersRepository, UsersRepository>();
             container.RegisterType<ILanguagesRepository, LanguangesRepository>();
             container.RegisterType<IJobsRepository, JobsRepository>();

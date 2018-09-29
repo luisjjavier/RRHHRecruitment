@@ -6,6 +6,7 @@ using RRHHRecruitment.Core.Models;
 using RRHHRecruitment.Core.Models.Enums;
 using RRHHRecruitment.Core.Services;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace RRHHRecruitment.Forms.Screens
@@ -17,10 +18,12 @@ namespace RRHHRecruitment.Forms.Screens
 
         private readonly JobsService _jobsService;
 
+        public Job Job { get; internal set; }
+
         public CreateJobsForm(JobsService jobsService)
         {
             InitializeComponent();
-            cbRiskLevel.DataSource = new BindingSource( Program.TranslateRiskLevel,null);
+            cbRiskLevel.DataSource = new BindingSource(Program.TranslateRiskLevel, null);
             cbRiskLevel.DisplayMember = "Value";
             cbRiskLevel.ValueMember = "Key";
 
@@ -39,8 +42,17 @@ namespace RRHHRecruitment.Forms.Screens
             if (IsValidForm())
             {
                 Job job = BuildJobRequest();
-                
-                IOperationResult<Job> basicOperationResult = _jobsService.CreateJob(job);
+                IOperationResult<Job> basicOperationResult;
+
+                if (Job == null)
+                {
+                    basicOperationResult = _jobsService.CreateJob(job);
+                }
+                else
+                {
+                    job.Id = Job.Id;
+                    basicOperationResult = _jobsService.UpdateJob(job);
+                }
 
                 if (!basicOperationResult.Success)
                 {
@@ -48,12 +60,11 @@ namespace RRHHRecruitment.Forms.Screens
                         MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     return;
                 }
-                MetroMessageBox.Show(this, "puesto de trabajo creado correctamente!", "Creacion de puesto de trabajo",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                this.Job = null;
                 DialogResult = DialogResult.OK;
                 Close();
             }
-     
+
         }
 
         private Job BuildJobRequest()
@@ -62,9 +73,9 @@ namespace RRHHRecruitment.Forms.Screens
             {
                 Name = nameTxt.Text,
                 MinSalary = minSalary,
-                RiskLevel = (RiskLevel) cbRiskLevel.SelectedValue,
+                RiskLevel = (RiskLevel)cbRiskLevel.SelectedValue,
                 MaxSalary = maxSalary,
-                IsActive =  true
+                IsActive = true
             };
         }
 
@@ -76,7 +87,7 @@ namespace RRHHRecruitment.Forms.Screens
                 e.Handled = true;
             }
 
-            if ((e.KeyChar == '.') && (((TextBox) sender).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && (((TextBox)sender).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -86,7 +97,7 @@ namespace RRHHRecruitment.Forms.Screens
         {
             double value;
             MetroTextBox textBox = sender as MetroTextBox;
-            if (double.TryParse(textBox.Text.Replace("$",""), out value))
+            if (double.TryParse(textBox.Text.Replace("$", ""), out value))
             {
                 textBox.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", value);
                 minSalary = value;
@@ -114,7 +125,7 @@ namespace RRHHRecruitment.Forms.Screens
 
         private bool IsValidForm()
         {
-           jobsErrorProvider.Clear();
+            jobsErrorProvider.Clear();
             bool isValidForm = true;
 
             if (string.IsNullOrWhiteSpace(nameTxt.Text))
@@ -142,6 +153,20 @@ namespace RRHHRecruitment.Forms.Screens
             }
 
             return isValidForm;
+        }
+
+        private void CreateJobsForm_Load(object sender, EventArgs e)
+        {
+            if (Job != null)
+            {
+                Text = "Edición de puestro de trabajo";
+                minSalary = Job.MinSalary;
+                maxSalary = Job.MaxSalary;
+                nameTxt.Text = Job.Name;
+                txtMaxSalary.Text = $"{Job.MaxSalary}";
+                txtMinSalary.Text = $"{Job.MinSalary}";
+                cbRiskLevel.SelectedValue = Job.RiskLevel;
+            }
         }
     }
 }

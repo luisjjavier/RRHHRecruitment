@@ -1,9 +1,9 @@
-﻿using RRHHRecruitment.Core.Contracts.Repositories;
+﻿using RRHHRecruitment.Core.Contracts;
+using RRHHRecruitment.Core.Contracts.Repositories;
 using RRHHRecruitment.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RRHHRecruitment.Core.Contracts;
 
 namespace RRHHRecruitment.Core.Services
 {
@@ -17,11 +17,22 @@ namespace RRHHRecruitment.Core.Services
         }
 
         public IEnumerable<Job> GetJobs()
-            => _jobsRepository.Get().ToList();
+            => _jobsRepository.GetWithoutActive().ToList();
 
         public IOperationResult<Job> CreateJob(Job job)
         {
             return _jobsRepository.Create(job);
+        }
+
+        public IOperationResult<Job> UpdateJob(Job job)
+        {
+            return _jobsRepository.Update(job);
+        }
+
+        public IOperationResult<Job> DeleteJob(Job job)
+        {
+            job.IsActive = false;
+            return _jobsRepository.Update(job);
         }
     }
 }

@@ -224,6 +224,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Name = "CreateJobsForm";
             this.Text = "Creacion de puestos";
+            this.Load += new System.EventHandler(this.CreateJobsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.jobsErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

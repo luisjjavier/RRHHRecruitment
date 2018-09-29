@@ -35,13 +35,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.riskLevelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.minSalaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxSalaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.jobBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -98,27 +98,8 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(785, 276);
             this.metroGrid1.TabIndex = 0;
+            this.metroGrid1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentDoubleClick);
             this.metroGrid1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.metroGrid1_CellFormatting);
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.ForeColor = System.Drawing.Color.Snow;
-            this.metroButton1.Location = new System.Drawing.Point(675, 80);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(102, 80);
-            this.metroButton1.TabIndex = 1;
-            this.metroButton1.Text = "Borrar";
-            this.metroButton1.UseSelectable = true;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(556, 80);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(102, 80);
-            this.metroButton2.TabIndex = 2;
-            this.metroButton2.Text = "Nuevo";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -157,6 +138,27 @@
             // jobBindingSource
             // 
             this.jobBindingSource.DataSource = typeof(RRHHRecruitment.Core.Models.Job);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.ForeColor = System.Drawing.Color.Snow;
+            this.metroButton1.Location = new System.Drawing.Point(675, 80);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(102, 80);
+            this.metroButton1.TabIndex = 1;
+            this.metroButton1.Text = "Borrar";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.Location = new System.Drawing.Point(556, 80);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(102, 80);
+            this.metroButton2.TabIndex = 2;
+            this.metroButton2.Text = "Nuevo";
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click_1);
             // 
             // JobsForm
             // 

@@ -16,7 +16,14 @@ namespace RRHHRecruitment.Persistence
         public RecruitmentContext() :
             base("name=RRHHRecruitment")
         {
-
+            Competitions = Set<Competition>();
+            Languages = Set<Language>();
+            Trainings = Set<Training>();
+            Jobs = Set<Job>();
+            Users = Set<User>();
+            Employees = Set<Employee>();
+            Candidates = Set<Candidate>();
+            WorkExperiences = Set<WorkExperience>();
         }
 
         internal DbSet<Competition> Competitions { get; set; }

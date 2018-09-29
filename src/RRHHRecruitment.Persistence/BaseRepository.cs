@@ -26,7 +26,7 @@ namespace RRHHRecruitment.Persistence
             {
                 _set.Add(entity);
                 _context.SaveChanges();
-
+                _context.Entry(entity).State = EntityState.Detached;
                 return BasicOperationResult<T>.Ok(entity);
             }
             catch (Exception e)
@@ -37,13 +37,13 @@ namespace RRHHRecruitment.Persistence
         }
 
         T IGenericRepository<T>.Find(Expression<Func<T, bool>> predicate)
-            => _set.FirstOrDefault(predicate);
+            => _set.AsNoTracking().FirstOrDefault(predicate);
 
         IEnumerable<T> IGenericRepository<T>.FindAll(Expression<Func<T, bool>> predicate)
             => _set.Where(predicate);
 
         IEnumerable<T> IGenericRepository<T>.Get()
-            => _set.AsEnumerable();
+            => _set.AsNoTracking().AsEnumerable();
 
         IOperationResult<T> IGenericRepository<T>.Remove(T entity)
         {
@@ -51,7 +51,7 @@ namespace RRHHRecruitment.Persistence
             {
                 _set.Remove(entity);
                 _context.SaveChanges();
-
+                _context.Entry(entity).State = EntityState.Detached;
                 return BasicOperationResult<T>.Ok();
             }
             catch (Exception e)
@@ -63,14 +63,26 @@ namespace RRHHRecruitment.Persistence
 
         IOperationResult<T> IGenericRepository<T>.Update(T entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Entry(entity).State = EntityState.Modified;
+                _context.SaveChanges();
+                _context.Entry(entity).State = EntityState.Detached;
+                return BasicOperationResult<T>.Ok();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return BasicOperationResult<T>.Fail(e.ToString());
+            }
+
         }
 
         bool IGenericRepository<T>.Exists(Expression<Func<T, bool>> predicate)
         {
             IQueryable<T> queryable = _set.AsQueryable();
 
-            return queryable.Any(predicate);
+            return queryable.AsNoTracking().Any(predicate);
         }
 
         void IGenericRepository<T>.Save()
