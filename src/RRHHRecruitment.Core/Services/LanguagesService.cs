@@ -1,7 +1,6 @@
 ﻿using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Contracts.Repositories;
 using RRHHRecruitment.Core.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +20,12 @@ namespace RRHHRecruitment.Core.Services
 
         public IOperationResult<Language> CreateLanguage(Language language)
         {
+            if (string.IsNullOrWhiteSpace(language.Name) )
+            {
+                return BasicOperationResult<Language>.Fail(
+                    "Se necesita por lo menos el nombre para poder guardar un idioma");
+            }
+
             return _languagesRepository.Create(language);
         }
     }

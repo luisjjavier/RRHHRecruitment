@@ -1,12 +1,9 @@
-﻿using MetroFramework.Forms;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using MetroFramework;
-using Unity;
+﻿using MetroFramework;
+using MetroFramework.Forms;
 using RRHHRecruitment.Core.Models;
-using RRHHRecruitment.Core.Models.Enums;
+using System;
+using System.Windows.Forms;
+using Unity;
 
 namespace RRHHRecruitment.Forms.Screens
 {
@@ -27,7 +24,7 @@ namespace RRHHRecruitment.Forms.Screens
             User user = Program.CurrentUser;
 
             UsernameToolStrip.Text = $@"Nombre de usuario: {user.Username}";
-            RoleToolStrip.Text = $@"Role: {translateRoleType[user.RoleType]}";
+            RoleToolStrip.Text = $@"Role: {Program.TranslateRoleType[user.RoleType]}";
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,20 +38,24 @@ namespace RRHHRecruitment.Forms.Screens
             }
         }
 
-        private Dictionary<RoleType, string> translateRoleType  = new Dictionary<RoleType, string>()
-        {
-            [RoleType.Admin] = "Administrador",
-            [RoleType.Candidates]  = "Candidatos",
-            [RoleType.HumanResources] = "Recursos Humanos"
-        };
 
         private void gestionDeIdiomasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form languageForm  =  Application.OpenForms["LanguageForm"] ?? _container.Resolve<LanguageForm>();
+            ShowForm(typeof(LanguageForm));
+        }
 
-            languageForm.MdiParent = this;
-            languageForm.Show();
-            languageForm.Focus();
+        private void gestionDePuestosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(JobsForm));
+        }
+
+        private void ShowForm(Type type)
+        {
+            Form form = Application.OpenForms[type.Name]  ?? _container.Resolve(type) as Form;
+
+            form.MdiParent = this;
+            form.Show();
+            form.Focus();
         }
     }
 }

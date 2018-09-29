@@ -44,6 +44,7 @@
     <Compile Include="Contracts\IEntityBase.cs" />
     <Compile Include="Contracts\IOperationResult.cs" />
     <Compile Include="Contracts\Repositories\IGenericRepository.cs" />
+    <Compile Include="Contracts\Repositories\IJobsRepository.cs" />
     <Compile Include="Contracts\Repositories\ILanguagesRepository.cs" />
     <Compile Include="Contracts\Repositories\IUsersRepository.cs" />
     <Compile Include="Models\BasicOperationResult.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WorkExperience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\JobsService.cs" />
     <Compile Include="Services\LanguagesService.cs" />
     <Compile Include="Services\UsersService.cs" />
   </ItemGroup>

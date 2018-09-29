@@ -12,6 +12,7 @@ namespace RRHHRecruitment.Forms.Screens
     {
         private readonly IUnityContainer _container;
         private readonly LanguagesService _languagesService;
+        private  Language selectedLanguage;
 
         public LanguageForm(IUnityContainer container, LanguagesService languagesService)
         {
@@ -60,6 +61,14 @@ namespace RRHHRecruitment.Forms.Screens
             var languange = languageBindingSource.Current as Language;
             languageName.Text = languange.Name;
             chkIsActive.Checked = languange.IsActive;
+        }
+
+        private void metroButton1_Click(object sender, System.EventArgs e)
+        {
+            selectedLanguage = null;
+            languageName.Text = "";
+            chkIsActive.Checked = false;
+
         }
     }
 }

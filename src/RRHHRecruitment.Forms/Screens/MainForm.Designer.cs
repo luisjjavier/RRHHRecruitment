@@ -36,6 +36,7 @@
             this.UsernameToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.RoleToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.gestionDePuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +45,8 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionDeIdiomasToolStripMenuItem,
-            this.salirToolStripMenuItem});
+            this.salirToolStripMenuItem,
+            this.gestionDePuestosToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(20, 60);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1121, 24);
@@ -88,6 +90,13 @@
             this.RoleToolStrip.Size = new System.Drawing.Size(30, 17);
             this.RoleToolStrip.Text = "Role";
             // 
+            // gestionDePuestosToolStripMenuItem
+            // 
+            this.gestionDePuestosToolStripMenuItem.Name = "gestionDePuestosToolStripMenuItem";
+            this.gestionDePuestosToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.gestionDePuestosToolStripMenuItem.Text = "Gestion de puestos";
+            this.gestionDePuestosToolStripMenuItem.Click += new System.EventHandler(this.gestionDePuestosToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,6 +128,7 @@
         private System.Windows.Forms.ToolStripMenuItem gestionDeIdiomasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel RoleToolStrip;
+        private System.Windows.Forms.ToolStripMenuItem gestionDePuestosToolStripMenuItem;
     }
 }
 
