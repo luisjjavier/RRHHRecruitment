@@ -209,9 +209,11 @@
             // 
             // CreateJobsForm
             // 
+            this.AcceptButton = this.metroButton1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 307);
+            this.ControlBox = false;
             this.Controls.Add(this.txtMaxSalary);
             this.Controls.Add(this.txtMinSalary);
             this.Controls.Add(this.cbRiskLevel);
@@ -222,7 +224,10 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.nameTxt);
             this.Controls.Add(this.metroLabel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CreateJobsForm";
+            this.Resizable = false;
             this.Text = "Creacion de puestos";
             this.Load += new System.EventHandler(this.CreateJobsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.jobsErrorProvider)).EndInit();

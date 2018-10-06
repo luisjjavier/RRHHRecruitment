@@ -1,4 +1,6 @@
-﻿using RRHHRecruitment.Core.Contracts;
+﻿using System.Collections;
+using System.Collections.Generic;
+using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Models.Enums;
 
 namespace RRHHRecruitment.Core.Models
@@ -37,5 +39,7 @@ namespace RRHHRecruitment.Core.Models
         /// Indicates the status of the current user
         /// </summary>
         public bool IsActive { get; set; }
+
+        public ICollection <Job> Jobs { get; set; }
     }
 }

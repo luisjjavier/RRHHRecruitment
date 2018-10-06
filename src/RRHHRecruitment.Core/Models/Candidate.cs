@@ -62,6 +62,11 @@ namespace RRHHRecruitment.Core.Models
         /// Recommended  by
         /// </summary>
         public ISet<string> RecommendedBy { get; set; }
+
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
     }
 }
  

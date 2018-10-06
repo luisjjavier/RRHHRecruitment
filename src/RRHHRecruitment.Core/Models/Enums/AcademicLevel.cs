@@ -5,6 +5,8 @@
     /// </summary>
     public enum AcademicLevel
     {
+        None = 0,
+
         /// <summary>
         /// Grade 
         /// </summary>

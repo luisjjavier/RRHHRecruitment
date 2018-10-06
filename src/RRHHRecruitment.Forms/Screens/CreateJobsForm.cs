@@ -75,7 +75,8 @@ namespace RRHHRecruitment.Forms.Screens
                 MinSalary = minSalary,
                 RiskLevel = (RiskLevel)cbRiskLevel.SelectedValue,
                 MaxSalary = maxSalary,
-                IsActive = true
+                IsActive = true,
+                UserId = Program.CurrentUser.Id
             };
         }
 

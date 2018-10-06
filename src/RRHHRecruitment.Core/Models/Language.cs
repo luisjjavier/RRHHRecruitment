@@ -21,5 +21,9 @@ namespace RRHHRecruitment.Core.Models
         /// Indicates if this language is active
         /// </summary>
         public bool IsActive { get; set; }
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

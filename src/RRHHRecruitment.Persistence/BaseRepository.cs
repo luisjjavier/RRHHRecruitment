@@ -40,7 +40,7 @@ namespace RRHHRecruitment.Persistence
             => _set.AsNoTracking().FirstOrDefault(predicate);
 
         IEnumerable<T> IGenericRepository<T>.FindAll(Expression<Func<T, bool>> predicate)
-            => _set.Where(predicate);
+            => _set.AsNoTracking().Where(predicate);
 
         IEnumerable<T> IGenericRepository<T>.Get()
             => _set.AsNoTracking().AsEnumerable();

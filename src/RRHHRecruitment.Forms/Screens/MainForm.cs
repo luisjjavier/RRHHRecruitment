@@ -57,5 +57,15 @@ namespace RRHHRecruitment.Forms.Screens
             form.Show();
             form.Focus();
         }
+
+        private void gestionDeCompetenciasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(CompetitionsForm));
+        }
+
+        private void gestionDeCapacitacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(TrainingsForm));
+        }
     }
 }

@@ -1,14 +1,13 @@
-﻿using RRHHRecruitment.Forms.Screens;
+﻿using RRHHRecruitment.Core.Contracts.Repositories;
+using RRHHRecruitment.Core.Models;
+using RRHHRecruitment.Core.Models.Enums;
+using RRHHRecruitment.Forms.Screens;
 using RRHHRecruitment.Persistence;
+using RRHHRecruitment.Persistence.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using RRHHRecruitment.Core.Contracts.Repositories;
-using RRHHRecruitment.Persistence.Repositories;
 using Unity;
-using RRHHRecruitment.Core.Models;
-using RRHHRecruitment.Core.Models.Enums;
-using Unity.Lifetime;
 
 namespace RRHHRecruitment.Forms
 {
@@ -52,7 +51,19 @@ namespace RRHHRecruitment.Forms
             [RiskLevel.Low] = "Bajo"
         };
 
-        public static  User CurrentUser { get; set; }
+
+        public static readonly Dictionary<AcademicLevel, string> TranslateAcademicLevel = new Dictionary<AcademicLevel, string>()
+        {
+            [AcademicLevel.None] = "Ninguno",
+            [AcademicLevel.Grade] = "Grado",
+            [AcademicLevel.Management] = "Gestión",
+            [AcademicLevel.Master] = "Maestria",
+            [AcademicLevel.PostGrade] = "Post grado",
+            [AcademicLevel.Tecno] = "Tecnico"
+        };
+
+
+        public static User CurrentUser { get; set; }
 
         private static IUnityContainer Bootstrap()
         {
@@ -62,7 +73,8 @@ namespace RRHHRecruitment.Forms
             container.RegisterType<IUsersRepository, UsersRepository>();
             container.RegisterType<ILanguagesRepository, LanguangesRepository>();
             container.RegisterType<IJobsRepository, JobsRepository>();
-
+            container.RegisterType<ICompetitionRepository, CompetitionRepository>();
+            container.RegisterType<ITrainingRepository, TrainingRepository>();
             return container;
         }
     }

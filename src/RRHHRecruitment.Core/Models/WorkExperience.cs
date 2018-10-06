@@ -47,5 +47,10 @@ namespace RRHHRecruitment.Core.Models
         /// Represents a candidate
         /// </summary>
         public Candidate Candidate { get; set; }
+
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

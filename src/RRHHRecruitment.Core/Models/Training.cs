@@ -35,8 +35,14 @@ namespace RRHHRecruitment.Core.Models
         /// </summary>
         public string Institution { get; set; }
 
-        public int CandidateId { get; set; }
-
         public ISet<Candidate> Candidates { get; set; }
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public string Description { get; set; }
     }
 }

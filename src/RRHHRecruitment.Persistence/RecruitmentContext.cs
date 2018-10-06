@@ -53,6 +53,10 @@ namespace RRHHRecruitment.Persistence
             modelBuilder.Configurations.Add(new EmployeesConfiguration());
             modelBuilder.Configurations.Add(new CandidatesConfiguration());
             modelBuilder.Configurations.Add(new LanguagesConfiguration());
+            modelBuilder.Entity<Job>()
+                .HasRequired(c => c.User)
+                .WithMany(user => user.Jobs)
+                .WillCascadeOnDelete(false);
         }
     }
 }

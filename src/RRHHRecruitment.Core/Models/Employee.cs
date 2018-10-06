@@ -49,5 +49,10 @@ namespace RRHHRecruitment.Core.Models
         /// Indicates the status of the current employee
         /// </summary>
         public bool IsActive { get; set; }
+
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
     }
 }

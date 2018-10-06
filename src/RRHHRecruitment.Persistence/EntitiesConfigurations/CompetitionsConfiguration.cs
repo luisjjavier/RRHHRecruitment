@@ -8,7 +8,6 @@ namespace RRHHRecruitment.Persistence.EntitiesConfigurations
         internal CompetitionsConfiguration()
         {
             Property(competition => competition.Description).IsRequired();
-            HasIndex(competition => competition.Description).IsUnique();
         }
     }
 }

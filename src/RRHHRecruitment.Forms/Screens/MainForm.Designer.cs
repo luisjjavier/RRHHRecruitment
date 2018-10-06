@@ -32,11 +32,13 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.gestionDeIdiomasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDePuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeCompetenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.UsernameToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.RoleToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.gestionDePuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeCapacitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -45,8 +47,10 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gestionDeIdiomasToolStripMenuItem,
+            this.gestionDePuestosToolStripMenuItem,
+            this.gestionDeCompetenciasToolStripMenuItem,
             this.salirToolStripMenuItem,
-            this.gestionDePuestosToolStripMenuItem});
+            this.gestionDeCapacitacionesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(20, 60);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1121, 24);
@@ -66,6 +70,20 @@
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            // 
+            // gestionDePuestosToolStripMenuItem
+            // 
+            this.gestionDePuestosToolStripMenuItem.Name = "gestionDePuestosToolStripMenuItem";
+            this.gestionDePuestosToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.gestionDePuestosToolStripMenuItem.Text = "Gestion de puestos";
+            this.gestionDePuestosToolStripMenuItem.Click += new System.EventHandler(this.gestionDePuestosToolStripMenuItem_Click);
+            // 
+            // gestionDeCompetenciasToolStripMenuItem
+            // 
+            this.gestionDeCompetenciasToolStripMenuItem.Name = "gestionDeCompetenciasToolStripMenuItem";
+            this.gestionDeCompetenciasToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
+            this.gestionDeCompetenciasToolStripMenuItem.Text = "Gestion de competencias";
+            this.gestionDeCompetenciasToolStripMenuItem.Click += new System.EventHandler(this.gestionDeCompetenciasToolStripMenuItem_Click);
             // 
             // statusStrip
             // 
@@ -90,12 +108,12 @@
             this.RoleToolStrip.Size = new System.Drawing.Size(30, 17);
             this.RoleToolStrip.Text = "Role";
             // 
-            // gestionDePuestosToolStripMenuItem
+            // gestionDeCapacitacionesToolStripMenuItem
             // 
-            this.gestionDePuestosToolStripMenuItem.Name = "gestionDePuestosToolStripMenuItem";
-            this.gestionDePuestosToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
-            this.gestionDePuestosToolStripMenuItem.Text = "Gestion de puestos";
-            this.gestionDePuestosToolStripMenuItem.Click += new System.EventHandler(this.gestionDePuestosToolStripMenuItem_Click);
+            this.gestionDeCapacitacionesToolStripMenuItem.Name = "gestionDeCapacitacionesToolStripMenuItem";
+            this.gestionDeCapacitacionesToolStripMenuItem.Size = new System.Drawing.Size(156, 20);
+            this.gestionDeCapacitacionesToolStripMenuItem.Text = "Gestion de capacitaciones";
+            this.gestionDeCapacitacionesToolStripMenuItem.Click += new System.EventHandler(this.gestionDeCapacitacionesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -129,6 +147,8 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel RoleToolStrip;
         private System.Windows.Forms.ToolStripMenuItem gestionDePuestosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDeCompetenciasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDeCapacitacionesToolStripMenuItem;
     }
 }
 

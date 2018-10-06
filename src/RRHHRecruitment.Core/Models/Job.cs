@@ -39,6 +39,11 @@ namespace RRHHRecruitment.Core.Models
         /// </summary>
         public bool IsActive { get; set; }
 
+
+        public int UserId { get; set; }
+
+        public User User { get; set; }
+
         public ISet<Candidate> Candidates { get; set; }
 
         public ISet<Employee> Employees { get; set; }
