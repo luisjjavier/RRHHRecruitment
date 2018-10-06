@@ -51,6 +51,24 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -92,11 +110,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\CandidatesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CandidatesForm.Designer.cs">
+      <DependentUpon>CandidatesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\CompetitionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Screens\CompetitionsForm.Designer.cs">
       <DependentUpon>CompetitionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CreateCandidateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CreateCandidateForm.Designer.cs">
+      <DependentUpon>CreateCandidateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\CreateCompetition.cs">
       <SubType>Form</SubType>
@@ -127,6 +157,12 @@
     </Compile>
     <Compile Include="Screens\CreateWorkExperience.Designer.cs">
       <DependentUpon>CreateWorkExperience.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\EmployeesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\EmployeesForm.Designer.cs">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\JobsForm.cs">
       <SubType>Form</SubType>
@@ -170,6 +206,7 @@
     <Compile Include="Screens\WorkExperienceForm.Designer.cs">
       <DependentUpon>WorkExperienceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -179,8 +216,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Screens\CandidatesForm.resx">
+      <DependentUpon>CandidatesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\CompetitionsForm.resx">
       <DependentUpon>CompetitionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\CreateCandidateForm.resx">
+      <DependentUpon>CreateCandidateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CreateCompetition.af.resx">
       <DependentUpon>CreateCompetition.cs</DependentUpon>
@@ -199,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CreateWorkExperience.resx">
       <DependentUpon>CreateWorkExperience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\EmployeesForm.resx">
+      <DependentUpon>EmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\JobsForm.resx">
       <DependentUpon>JobsForm.cs</DependentUpon>
@@ -222,7 +268,9 @@
       <DependentUpon>WorkExperienceForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Candidate.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Competition.datasource" />
+    <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Employee.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Job.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Language.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Training.datasource" />
@@ -250,6 +298,24 @@
       <Project>{48c62e13-e0e1-40f1-8205-e0076786a5c9}</Project>
       <Name>RRHHRecruitment.Persistence</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

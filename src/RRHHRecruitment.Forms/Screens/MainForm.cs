@@ -77,5 +77,10 @@ namespace RRHHRecruitment.Forms.Screens
         {
             ShowForm(typeof(UsersForm));
         }
+
+        private void gestionDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(EmployeesForm));
+        }
     }
 }

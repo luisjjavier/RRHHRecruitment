@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Contracts\IEntityBase.cs" />
     <Compile Include="Contracts\IOperationResult.cs" />
+    <Compile Include="Contracts\Repositories\ICandidatesRepository.cs" />
     <Compile Include="Contracts\Repositories\ICompetitionRepository.cs" />
+    <Compile Include="Contracts\Repositories\IEmployeeRepository.cs" />
     <Compile Include="Contracts\Repositories\IGenericRepository.cs" />
     <Compile Include="Contracts\Repositories\IJobsRepository.cs" />
     <Compile Include="Contracts\Repositories\ILanguagesRepository.cs" />
@@ -63,7 +65,9 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\WorkExperience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CandidatesService.cs" />
     <Compile Include="Services\CompetitionsService.cs" />
+    <Compile Include="Services\EmployeeServices.cs" />
     <Compile Include="Services\JobsService.cs" />
     <Compile Include="Services\LanguagesService.cs" />
     <Compile Include="Services\TrainingsService.cs" />

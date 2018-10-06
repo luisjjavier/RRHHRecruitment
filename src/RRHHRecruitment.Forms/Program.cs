@@ -77,6 +77,8 @@ namespace RRHHRecruitment.Forms
             container.RegisterType<ICompetitionRepository, CompetitionRepository>();
             container.RegisterType<ITrainingRepository, TrainingRepository>();
             container.RegisterType<IWorkExperienceRepository, WorkExperienceRepository>();
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>();
+            container.RegisterType<ICandidatesRepository, CandidatesRepository>();
             return container;
         }
     }
