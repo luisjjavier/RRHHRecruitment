@@ -1,5 +1,8 @@
-﻿using RRHHRecruitment.Core.Contracts.Repositories;
+﻿using RRHHRecruitment.Core.Contracts;
+using RRHHRecruitment.Core.Contracts.Repositories;
 using RRHHRecruitment.Core.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RRHHRecruitment.Core.Services
 {
@@ -12,6 +15,11 @@ namespace RRHHRecruitment.Core.Services
 
         public UsersService(IUsersRepository usersRepository) 
             => _usersRepository = usersRepository;
+
+        public IEnumerable<User> GetUsers()
+        {
+            return _usersRepository.Get().ToList();
+        }
 
         /// <summary>
         /// Finds a user and validate it
@@ -34,6 +42,22 @@ namespace RRHHRecruitment.Core.Services
             }
 
             return BasicOperationResult<User>.Ok(foundUser);
+        }
+
+        public IOperationResult<User> UpdateUser(User newUser)
+        {
+            return _usersRepository.Update(newUser);
+        }
+
+        public IOperationResult<User> CreateUser(User newUser)
+        {
+            return _usersRepository.Create(newUser);
+        }
+
+        public IOperationResult<User> Deactivate(User user)
+        {
+            user.IsActive = false;
+            return _usersRepository.Update(user);
         }
     }
 }

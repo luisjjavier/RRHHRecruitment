@@ -5,6 +5,8 @@
     /// </summary>
     public enum RoleType
     {
+        None = 0,
+
         /// <summary>
         /// Has control of everything
         /// </summary>

@@ -49,6 +49,7 @@
     <Compile Include="Contracts\Repositories\ILanguagesRepository.cs" />
     <Compile Include="Contracts\Repositories\ITrainingRepository.cs" />
     <Compile Include="Contracts\Repositories\IUsersRepository.cs" />
+    <Compile Include="Contracts\Repositories\IWorkExperienceRepository.cs" />
     <Compile Include="Models\BasicOperationResult.cs" />
     <Compile Include="Models\Candidate.cs" />
     <Compile Include="Models\Competition.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Services\LanguagesService.cs" />
     <Compile Include="Services\TrainingsService.cs" />
     <Compile Include="Services\UsersService.cs" />
+    <Compile Include="Services\WorkExperiencesService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

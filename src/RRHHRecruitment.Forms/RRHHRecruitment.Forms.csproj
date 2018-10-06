@@ -116,6 +116,18 @@
     <Compile Include="Screens\CreateTrainingForm.Designer.cs">
       <DependentUpon>CreateTrainingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\CreateUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CreateUsersForm.Designer.cs">
+      <DependentUpon>CreateUsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\CreateWorkExperience.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CreateWorkExperience.Designer.cs">
+      <DependentUpon>CreateWorkExperience.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\JobsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +158,18 @@
     <Compile Include="Screens\TrainingsForm.Designer.cs">
       <DependentUpon>TrainingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\WorkExperienceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\WorkExperienceForm.Designer.cs">
+      <DependentUpon>WorkExperienceForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -170,6 +194,12 @@
     <EmbeddedResource Include="Screens\CreateTrainingForm.resx">
       <DependentUpon>CreateTrainingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screens\CreateUsersForm.resx">
+      <DependentUpon>CreateUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\CreateWorkExperience.resx">
+      <DependentUpon>CreateWorkExperience.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\JobsForm.resx">
       <DependentUpon>JobsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,11 +215,19 @@
     <EmbeddedResource Include="Screens\TrainingsForm.resx">
       <DependentUpon>TrainingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screens\UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\WorkExperienceForm.resx">
+      <DependentUpon>WorkExperienceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Competition.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Job.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Language.datasource" />
     <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.Training.datasource" />
+    <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.User.datasource" />
+    <None Include="Properties\DataSources\RRHHRecruitment.Core.Models.WorkExperience.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

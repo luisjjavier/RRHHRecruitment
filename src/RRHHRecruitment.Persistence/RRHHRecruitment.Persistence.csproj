@@ -53,33 +53,9 @@
     <Compile Include="EntitiesConfigurations\EmployeesConfiguration.cs" />
     <Compile Include="EntitiesConfigurations\LanguagesConfiguration.cs" />
     <Compile Include="EntitiesConfigurations\UsersConfigurations.cs" />
-    <Compile Include="Migrations\201809031609057_InitialTable.cs" />
-    <Compile Include="Migrations\201809031609057_InitialTable.Designer.cs">
-      <DependentUpon>201809031609057_InitialTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809062229581_RestOfTables.cs" />
-    <Compile Include="Migrations\201809062229581_RestOfTables.Designer.cs">
-      <DependentUpon>201809062229581_RestOfTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809062233284_MoreTables.cs" />
-    <Compile Include="Migrations\201809062233284_MoreTables.Designer.cs">
-      <DependentUpon>201809062233284_MoreTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809301756570_UsersAssociation.cs" />
-    <Compile Include="Migrations\201809301756570_UsersAssociation.Designer.cs">
-      <DependentUpon>201809301756570_UsersAssociation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810052352513_RemovingIndexFromCompetition.cs" />
-    <Compile Include="Migrations\201810052352513_RemovingIndexFromCompetition.Designer.cs">
-      <DependentUpon>201810052352513_RemovingIndexFromCompetition.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810060106081_AddingIsActive.cs" />
-    <Compile Include="Migrations\201810060106081_AddingIsActive.Designer.cs">
-      <DependentUpon>201810060106081_AddingIsActive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810060124139_AddingIsActive1.cs" />
-    <Compile Include="Migrations\201810060124139_AddingIsActive1.Designer.cs">
-      <DependentUpon>201810060124139_AddingIsActive1.cs</DependentUpon>
+    <Compile Include="Migrations\201810060242533_InitialMigration.cs" />
+    <Compile Include="Migrations\201810060242533_InitialMigration.Designer.cs">
+      <DependentUpon>201810060242533_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +66,7 @@
     <Compile Include="Repositories\LanguangesRepository.cs" />
     <Compile Include="Repositories\TrainingRepository.cs" />
     <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\WorkExperienceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -102,28 +79,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809031609057_InitialTable.resx">
-      <DependentUpon>201809031609057_InitialTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809062229581_RestOfTables.resx">
-      <DependentUpon>201809062229581_RestOfTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809062233284_MoreTables.resx">
-      <DependentUpon>201809062233284_MoreTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809301756570_UsersAssociation.resx">
-      <DependentUpon>201809301756570_UsersAssociation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810052352513_RemovingIndexFromCompetition.resx">
-      <DependentUpon>201810052352513_RemovingIndexFromCompetition.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810060106081_AddingIsActive.resx">
-      <DependentUpon>201810060106081_AddingIsActive.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810060124139_AddingIsActive1.resx">
-      <DependentUpon>201810060124139_AddingIsActive1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810060242533_InitialMigration.resx">
+      <DependentUpon>201810060242533_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

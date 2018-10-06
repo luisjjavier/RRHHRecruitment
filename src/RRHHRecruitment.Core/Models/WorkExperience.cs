@@ -1,5 +1,6 @@
 ﻿using RRHHRecruitment.Core.Contracts;
 using System;
+using System.Collections.Generic;
 
 namespace RRHHRecruitment.Core.Models
 {
@@ -39,18 +40,14 @@ namespace RRHHRecruitment.Core.Models
         public double Salary { get; set; }
 
         /// <summary>
-        /// Represents a candidate id
-        /// </summary>
-        public int CandidateId { get; set; }
-
-        /// <summary>
         /// Represents a candidate
         /// </summary>
-        public Candidate Candidate { get; set; }
-
+        public ISet<Candidate> Candidate { get; set; }
 
         public int UserId { get; set; }
 
         public User User { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

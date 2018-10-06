@@ -38,6 +38,7 @@ namespace RRHHRecruitment.Forms
 
         public static readonly Dictionary<RoleType, string> TranslateRoleType = new Dictionary<RoleType, string>()
         {
+            [RoleType.None] = "Ninguno",
             [RoleType.Admin] = "Administrador",
             [RoleType.Candidates] = "Candidatos",
             [RoleType.HumanResources] = "Recursos Humanos"
@@ -75,6 +76,7 @@ namespace RRHHRecruitment.Forms
             container.RegisterType<IJobsRepository, JobsRepository>();
             container.RegisterType<ICompetitionRepository, CompetitionRepository>();
             container.RegisterType<ITrainingRepository, TrainingRepository>();
+            container.RegisterType<IWorkExperienceRepository, WorkExperienceRepository>();
             return container;
         }
     }

@@ -7,13 +7,13 @@ namespace RRHHRecruitment.Persistence.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UsersAssociation : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UsersAssociation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809301756570_UsersAssociation"; }
+            get { return "201810060242533_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

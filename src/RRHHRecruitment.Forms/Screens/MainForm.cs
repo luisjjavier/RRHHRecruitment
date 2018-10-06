@@ -67,5 +67,15 @@ namespace RRHHRecruitment.Forms.Screens
         {
             ShowForm(typeof(TrainingsForm));
         }
+
+        private void gestionExperienciaDeTrabajoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(WorkExperienceForm));
+        }
+
+        private void gestionDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(UsersForm));
+        }
     }
 }
