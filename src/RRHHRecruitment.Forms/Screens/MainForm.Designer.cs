@@ -37,11 +37,13 @@
             this.gestionDeCapacitacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionExperienciaDeTrabajoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.UsernameToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.RoleToolStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.gestionDeEmpleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionDeCandidatosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearCandidatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -52,14 +54,16 @@
             this.gestionDeIdiomasToolStripMenuItem,
             this.gestionDePuestosToolStripMenuItem,
             this.gestionDeCompetenciasToolStripMenuItem,
-            this.salirToolStripMenuItem,
             this.gestionDeCapacitacionesToolStripMenuItem,
             this.gestionExperienciaDeTrabajoToolStripMenuItem,
             this.gestionDeUsuariosToolStripMenuItem,
-            this.gestionDeEmpleadosToolStripMenuItem});
+            this.gestionDeEmpleadosToolStripMenuItem,
+            this.gestionDeCandidatosToolStripMenuItem,
+            this.crearCandidatoToolStripMenuItem,
+            this.salirToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(20, 60);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1121, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1387, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -112,6 +116,13 @@
             this.gestionDeUsuariosToolStripMenuItem.Text = "Gestion de usuarios";
             this.gestionDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.gestionDeUsuariosToolStripMenuItem_Click);
             // 
+            // gestionDeEmpleadosToolStripMenuItem
+            // 
+            this.gestionDeEmpleadosToolStripMenuItem.Name = "gestionDeEmpleadosToolStripMenuItem";
+            this.gestionDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.gestionDeEmpleadosToolStripMenuItem.Text = "Gestion de empleados";
+            this.gestionDeEmpleadosToolStripMenuItem.Click += new System.EventHandler(this.gestionDeEmpleadosToolStripMenuItem_Click);
+            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -119,7 +130,7 @@
             this.RoleToolStrip});
             this.statusStrip.Location = new System.Drawing.Point(20, 676);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1121, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1387, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -135,18 +146,25 @@
             this.RoleToolStrip.Size = new System.Drawing.Size(30, 17);
             this.RoleToolStrip.Text = "Role";
             // 
-            // gestionDeEmpleadosToolStripMenuItem
+            // gestionDeCandidatosToolStripMenuItem
             // 
-            this.gestionDeEmpleadosToolStripMenuItem.Name = "gestionDeEmpleadosToolStripMenuItem";
-            this.gestionDeEmpleadosToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
-            this.gestionDeEmpleadosToolStripMenuItem.Text = "Gestion de empleados";
-            this.gestionDeEmpleadosToolStripMenuItem.Click += new System.EventHandler(this.gestionDeEmpleadosToolStripMenuItem_Click);
+            this.gestionDeCandidatosToolStripMenuItem.Name = "gestionDeCandidatosToolStripMenuItem";
+            this.gestionDeCandidatosToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.gestionDeCandidatosToolStripMenuItem.Text = "Gestion de candidatos";
+            this.gestionDeCandidatosToolStripMenuItem.Click += new System.EventHandler(this.gestionDeCandidatosToolStripMenuItem_Click);
+            // 
+            // crearCandidatoToolStripMenuItem
+            // 
+            this.crearCandidatoToolStripMenuItem.Name = "crearCandidatoToolStripMenuItem";
+            this.crearCandidatoToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.crearCandidatoToolStripMenuItem.Text = "Crear candidato";
+            this.crearCandidatoToolStripMenuItem.Click += new System.EventHandler(this.crearCandidatoToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1161, 718);
+            this.ClientSize = new System.Drawing.Size(1427, 718);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
@@ -179,6 +197,8 @@
         private System.Windows.Forms.ToolStripMenuItem gestionExperienciaDeTrabajoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDeEmpleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestionDeCandidatosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crearCandidatoToolStripMenuItem;
     }
 }
 

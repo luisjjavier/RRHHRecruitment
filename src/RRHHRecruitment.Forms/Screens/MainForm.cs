@@ -3,6 +3,7 @@ using MetroFramework.Forms;
 using RRHHRecruitment.Core.Models;
 using System;
 using System.Windows.Forms;
+using RRHHRecruitment.Core.Models.Enums;
 using Unity;
 
 namespace RRHHRecruitment.Forms.Screens
@@ -25,6 +26,25 @@ namespace RRHHRecruitment.Forms.Screens
 
             UsernameToolStrip.Text = $@"Nombre de usuario: {user.Username}";
             RoleToolStrip.Text = $@"Role: {Program.TranslateRoleType[user.RoleType]}";
+
+            switch (user.RoleType)
+            {
+                case RoleType.HumanResources:
+                    gestionDeIdiomasToolStripMenuItem.Visible = false;
+                    gestionDeCompetenciasToolStripMenuItem.Visible = false;
+                    gestionDeCapacitacionesToolStripMenuItem.Visible = false;
+                    gestionExperienciaDeTrabajoToolStripMenuItem.Visible = false;
+                    gestionDeUsuariosToolStripMenuItem.Visible = false;
+                    crearCandidatoToolStripMenuItem.Visible = false;
+                    break;
+                case RoleType.Candidates:
+                    gestionDeUsuariosToolStripMenuItem.Visible = false;
+                    gestionDePuestosToolStripMenuItem.Visible = false;
+                    gestionDeCandidatosToolStripMenuItem.Visible = false;
+                    break;
+                    default:
+                    break;
+            }
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,6 +101,17 @@ namespace RRHHRecruitment.Forms.Screens
         private void gestionDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowForm(typeof(EmployeesForm));
+        }
+
+        private void crearCandidatoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(CreateCandidateForm));
+        }
+
+        private void gestionDeCandidatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowForm(typeof(CandidatesForm));
+
         }
     }
 }
