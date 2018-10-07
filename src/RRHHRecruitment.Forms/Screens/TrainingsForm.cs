@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
 using RRHHRecruitment.Core.Contracts;
@@ -13,6 +14,9 @@ namespace RRHHRecruitment.Forms.Screens
     {
         private readonly TrainingsService _trainingsService;
         private readonly IUnityContainer _container;
+
+        public bool IsSelectionMode { get; internal set; }
+        public List<Training> Trainings { get; internal set; }=  new List<Training>();
 
         public TrainingsForm(TrainingsService trainingsService, IUnityContainer container )
         {
@@ -72,6 +76,29 @@ namespace RRHHRecruitment.Forms.Screens
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 trainingBindingSource.DataSource = _trainingsService.GetTrainings(Program.CurrentUser.Id);
             }
+        }
+
+        private void TrainingsForm_Load(object sender, System.EventArgs e)
+        {
+            if (IsSelectionMode)
+            {
+                metroGrid1.MultiSelect = true;
+                metroGrid1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                btnDelete.Hide();
+                btnNew.Hide();
+                metroButton1.Show();
+            }
+        }
+
+        private void metroButton1_Click(object sender, System.EventArgs e)
+        {
+            for (int i = 0; i < metroGrid1.SelectedRows.Count; i++)
+            {
+                Trainings.Add((Training)metroGrid1.SelectedRows[i].DataBoundItem);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

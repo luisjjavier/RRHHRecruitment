@@ -23,7 +23,7 @@ namespace RRHHRecruitment.Core.Services
 
         public IOperationResult<Candidate> CreateCandidate(Candidate candidate)
         {
-            return _candidatesRepository.Create(candidate);
+            return _candidatesRepository.CreateCandidate(candidate);
         }
 
         public IOperationResult<Candidate> UpdateCandidate(Candidate candidate)

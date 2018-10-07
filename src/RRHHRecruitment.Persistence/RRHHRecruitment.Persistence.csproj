@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201810061650031_IsActive.Designer.cs">
       <DependentUpon>201810061650031_IsActive.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810070139109_AddingLanguages.cs" />
+    <Compile Include="Migrations\201810070139109_AddingLanguages.Designer.cs">
+      <DependentUpon>201810070139109_AddingLanguages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecruitmentContext.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810061650031_IsActive.resx">
       <DependentUpon>201810061650031_IsActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810070139109_AddingLanguages.resx">
+      <DependentUpon>201810070139109_AddingLanguages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

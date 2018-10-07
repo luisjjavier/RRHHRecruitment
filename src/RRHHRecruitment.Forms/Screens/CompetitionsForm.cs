@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
 using RRHHRecruitment.Core.Contracts;
@@ -23,9 +24,12 @@ namespace RRHHRecruitment.Forms.Screens
             _container = container;
         }
 
+        public List<Competition> Competitions { get; internal set; } = new List<Competition>();
+        public bool IsSelectionMode { get; internal set; }
+
         private void metroButton1_Click(object sender, System.EventArgs e)
         {
-            var form =  _container.Resolve<CreateCompetition>();
+            var form = _container.Resolve<CreateCompetition>();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
@@ -61,6 +65,30 @@ namespace RRHHRecruitment.Forms.Screens
                 MetroMessageBox.Show(this, "La competencia de trabajo fue editada correctamente!", "Edición de competencia",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 competitionBindingSource.DataSource = _competitionsService.GetCompetition(Program.CurrentUser.Id);
+            }
+        }
+
+        private void metroButton3_Click(object sender, System.EventArgs e)
+        {
+            for (int i = 0; i < metroGrid1.SelectedRows.Count; i++)
+            {
+                Competitions.Add((Competition)metroGrid1.SelectedRows[i].DataBoundItem);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
+
+        }
+
+        private void CompetitionsForm_Load(object sender, System.EventArgs e)
+        {
+            if (IsSelectionMode)
+            {
+                metroGrid1.MultiSelect = true;
+                metroGrid1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                metroButton1.Hide();
+                metroButton2.Hide();
+                metroButton3.Show();
             }
         }
     }

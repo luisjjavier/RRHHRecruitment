@@ -3,6 +3,7 @@ using MetroFramework.Forms;
 using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Models;
 using RRHHRecruitment.Core.Services;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Unity;
 
@@ -12,6 +13,9 @@ namespace RRHHRecruitment.Forms.Screens
     {
         private readonly WorkExperiencesService _workExperiencesService;
         private readonly IUnityContainer _container;
+
+        public bool IsSelectionMode { get; internal set; }
+        public List<WorkExperience> WorkExperiences { get; internal set; } = new List<WorkExperience>();
 
         public WorkExperienceForm(WorkExperiencesService workExperiencesService, IUnityContainer container)
         {
@@ -60,6 +64,29 @@ namespace RRHHRecruitment.Forms.Screens
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 workExperienceBindingSource.DataSource = _workExperiencesService.GetWorkExperience(Program.CurrentUser.Id);
             }
+        }
+
+        private void WorkExperienceForm_Load(object sender, System.EventArgs e)
+        {
+            if (IsSelectionMode)
+            {
+                metroGrid1.MultiSelect = true;
+                metroGrid1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                btnDelete.Hide();
+                btnCreate.Hide();
+                metroButton1.Show();
+            }
+        }
+
+        private void metroButton1_Click(object sender, System.EventArgs e)
+        {
+            for (int i = 0; i < metroGrid1.SelectedRows.Count; i++)
+            {
+                WorkExperiences.Add((WorkExperience)metroGrid1.SelectedRows[i].DataBoundItem);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

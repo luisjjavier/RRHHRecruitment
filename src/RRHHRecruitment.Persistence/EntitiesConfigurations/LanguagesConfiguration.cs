@@ -8,7 +8,6 @@ namespace RRHHRecruitment.Persistence.EntitiesConfigurations
         public LanguagesConfiguration()
         {
             Property(language => language.Name).IsRequired();
-            HasIndex(language => language.Name).IsUnique();
         }
     }
 }

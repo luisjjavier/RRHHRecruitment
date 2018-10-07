@@ -15,8 +15,8 @@ namespace RRHHRecruitment.Core.Services
             _languagesRepository = languagesRepository;
         }
 
-        public IEnumerable<Language> GetLanguages() 
-            => _languagesRepository.Get().ToList();
+        public IEnumerable<Language> GetLanguages(int userId) 
+            => _languagesRepository.FindAll(language => language.IsActive && language.UserId == userId).ToList();
 
         public IOperationResult<Language> CreateLanguage(Language language)
         {

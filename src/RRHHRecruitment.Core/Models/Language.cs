@@ -1,4 +1,5 @@
-﻿using RRHHRecruitment.Core.Contracts;
+﻿using System.Collections.Generic;
+using RRHHRecruitment.Core.Contracts;
 
 namespace RRHHRecruitment.Core.Models
 {
@@ -25,5 +26,7 @@ namespace RRHHRecruitment.Core.Models
         public int UserId { get; set; }
 
         public User User { get; set; }
+
+        public ISet<Candidate> Candidates { get; set; }
     }
 }

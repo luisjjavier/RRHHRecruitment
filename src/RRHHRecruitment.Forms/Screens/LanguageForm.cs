@@ -1,10 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Forms;
 using RRHHRecruitment.Core.Contracts;
 using RRHHRecruitment.Core.Models;
 using RRHHRecruitment.Core.Services;
 using Unity;
+using System.Linq;
 
 namespace RRHHRecruitment.Forms.Screens
 {
@@ -13,6 +15,9 @@ namespace RRHHRecruitment.Forms.Screens
         private readonly IUnityContainer _container;
         private readonly LanguagesService _languagesService;
         private  Language selectedLanguage;
+        public ICollection<Language> Languages { get; set; } = new List<Language>();
+
+        public bool IsSelectionMode { get; internal set; } = false;
 
         public LanguageForm(IUnityContainer container, LanguagesService languagesService)
         {
@@ -21,7 +26,7 @@ namespace RRHHRecruitment.Forms.Screens
             _container = container;
             _languagesService =  languagesService;
 
-            languageBindingSource.DataSource =  languagesService.GetLanguages();
+            languageBindingSource.DataSource =  _languagesService.GetLanguages(Program.CurrentUser.Id);
         }
 
         private void btnSave_Click(object sender, System.EventArgs e)
@@ -29,13 +34,14 @@ namespace RRHHRecruitment.Forms.Screens
             Language language = new Language()
             {
                 IsActive = chkIsActive.Checked,
-                Name = languageName.Text
+                Name = languageName.Text,
+                UserId =  Program.CurrentUser.Id
             };
             IOperationResult<Language> operationResult =  _languagesService.CreateLanguage(language);
 
             if (operationResult.Success)
             {
-                languageBindingSource.DataSource = _languagesService.GetLanguages();
+                languageBindingSource.DataSource = _languagesService.GetLanguages(Program.CurrentUser.Id);
             }
             else
             {
@@ -69,6 +75,30 @@ namespace RRHHRecruitment.Forms.Screens
             languageName.Text = "";
             chkIsActive.Checked = false;
 
+        }
+
+        private void LanguageForm_Load(object sender, System.EventArgs e)
+        {
+            if (IsSelectionMode)
+            {
+                languageGrid.MultiSelect = true;
+                languageGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                metroButton1.Hide();
+                btnClear.Hide();
+                btnSave.Hide();
+                metroButton2.Show();
+            }
+        }
+
+        private void metroButton2_Click(object sender, System.EventArgs e)
+        {
+            for (int i = 0; i < languageGrid.SelectedRows.Count; i++)
+            {
+                Languages.Add((Language)languageGrid.SelectedRows[i].DataBoundItem);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

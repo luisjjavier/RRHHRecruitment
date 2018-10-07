@@ -7,6 +7,8 @@ using System;
 using MetroFramework;
 using MetroFramework.Controls;
 using RRHHRecruitment.Core.Contracts;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RRHHRecruitment.Forms.Screens
 {
@@ -15,8 +17,12 @@ namespace RRHHRecruitment.Forms.Screens
         private readonly CandidatesService _candidatesService;
         private readonly IUnityContainer _container;
         private readonly JobsService _jobsService;
+        private readonly List<Language> _languages;
+        private readonly List<Training> _trainings;
+        private readonly List<WorkExperience> _workExperiences = new   List<WorkExperience>();
+        private readonly  List<Competition> _competitions = new List<Competition>();
         private double maxSalary = 0;
-
+        
         public Candidate CurrentCandidate { get; set; }
 
         public CreateCandidateForm(CandidatesService candidatesService, IUnityContainer container, JobsService jobsService)
@@ -27,6 +33,8 @@ namespace RRHHRecruitment.Forms.Screens
             cbJob.DataSource = new BindingSource(jobsService.GetJobs(), null);
             cbJob.DisplayMember = "Name";
             cbJob.ValueMember = "Id";
+            _languages = new List<Language>();
+            _trainings = new List<Training>();
         }
 
         private void CreateCandidateForm_Load(object sender, System.EventArgs e)
@@ -76,6 +84,10 @@ namespace RRHHRecruitment.Forms.Screens
                 UserId =  Program.CurrentUser.Id,
                 RecommendedBy =  txtRecommendBy.Text,
                 JobId = (int)cbJob.SelectedValue,
+                Competitions =  new HashSet<Competition>(_competitions),
+                Trainings = new HashSet<Training>(_trainings),
+                WorkExperiences = new HashSet<WorkExperience>(_workExperiences),
+                Languages = new HashSet<Language>(_languages),
                 IsActive = true
             };
         }
@@ -93,10 +105,10 @@ namespace RRHHRecruitment.Forms.Screens
                 txtName.WithError = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtIdentification.Text))
+            if (string.IsNullOrWhiteSpace(txtIdentification.Text)  || !ValidateIdentification(txtIdentification.Text))
             {
                 isValidForm = false;
-                candidateErrorProvider.SetError(txtName, "El valor ingresado en la cedula es incorrecto");
+                candidateErrorProvider.SetError(txtIdentification, "El valor ingresado en la cedula es incorrecto");
                 txtIdentification.WithError = true;
             }
 
@@ -144,6 +156,120 @@ namespace RRHHRecruitment.Forms.Screens
             {
                 textBox.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C2}", maxSalary);
             }
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<LanguageForm>();
+
+            form.IsSelectionMode = true;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _languages.AddRange( form.Languages.Where(language => _languages.All(lang => lang.Id != language.Id)).ToList());
+                languageBindingSource.DataSource = _languages;
+                languageBindingSource.ResetBindings(true);
+            }
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            _languages.Remove(languageBindingSource.Current as Language);
+            languageBindingSource.DataSource = _languages;
+            languageBindingSource.ResetBindings(true);
+        }
+
+        private void btnAddTraining_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<TrainingsForm>();
+
+            form.IsSelectionMode = true;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _trainings.AddRange(form.Trainings.Where(training => _trainings.All(t => t.Id != training.Id)).ToList());
+                trainingBindingSource.DataSource = _trainings;
+                trainingBindingSource.ResetBindings(true);
+            }
+
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            _trainings.Remove(trainingBindingSource.Current as Training);
+            trainingBindingSource.DataSource = _trainings;
+            trainingBindingSource.ResetBindings(true);
+        }
+
+        private void metroButton7_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<WorkExperienceForm>();
+
+            form.IsSelectionMode = true;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _workExperiences.AddRange(form.WorkExperiences.Where(expe => _workExperiences.All(t => t.Id != expe.Id)).ToList());
+                workExperienceBindingSource.DataSource = _workExperiences;
+                workExperienceBindingSource.ResetBindings(true);
+            }
+        }
+
+        private void metroButton6_Click(object sender, EventArgs e)
+        {
+            _workExperiences.Remove(workExperienceBindingSource.Current as WorkExperience);
+            workExperienceBindingSource.DataSource = _workExperiences;
+            workExperienceBindingSource.ResetBindings(true);
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            var form = _container.Resolve<CompetitionsForm>();
+
+            form.IsSelectionMode = true;
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _competitions.AddRange(form.Competitions.Where(expe => _competitions.All(t => t.Id != expe.Id)).ToList());
+                competitionBindingSource.DataSource = _competitions;
+                competitionBindingSource.ResetBindings(true);
+            }
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            _competitions.Remove(competitionBindingSource.Current as Competition);
+            competitionBindingSource.DataSource = _competitions;
+            competitionBindingSource.ResetBindings(true);
+        }
+
+        public bool ValidateIdentification(string identification)
+        {
+            int total = 0;
+            string rawIdentification = identification.Replace("-", "");
+            int identificationLength = rawIdentification.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+
+            if (identificationLength < 11 || identificationLength > 11)
+            {
+                return false;
+            }
+
+            for (int checkDigit = 1; checkDigit <= identificationLength; checkDigit++)
+            {
+                int sumOfDigits = Int32.Parse(rawIdentification.Substring(checkDigit - 1, 1)) * digitoMult[checkDigit - 1];
+                if (sumOfDigits < 10)
+                    total += sumOfDigits;
+                else
+                    total += Int32.Parse(sumOfDigits.ToString().Substring(0, 1)) + Int32.Parse(sumOfDigits.ToString().Substring(1, 1));
+            }
+
+            if (total % 10 != 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

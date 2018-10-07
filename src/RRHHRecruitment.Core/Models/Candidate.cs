@@ -58,6 +58,8 @@ namespace RRHHRecruitment.Core.Models
         /// </summary>
         public ISet<WorkExperience> WorkExperiences { get; set; }
 
+        public ISet<Language> Languages { get; set; }
+
         /// <summary>
         /// Recommended  by
         /// </summary>
