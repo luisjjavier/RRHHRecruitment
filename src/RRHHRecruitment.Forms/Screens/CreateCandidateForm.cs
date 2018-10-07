@@ -1,14 +1,14 @@
-﻿using RRHHRecruitment.Core.Services;
-using System.Windows.Forms;
-using MetroFramework.Forms;
-using RRHHRecruitment.Core.Models;
-using Unity;
-using System;
-using MetroFramework;
+﻿using MetroFramework;
 using MetroFramework.Controls;
+using MetroFramework.Forms;
 using RRHHRecruitment.Core.Contracts;
+using RRHHRecruitment.Core.Models;
+using RRHHRecruitment.Core.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using Unity;
 
 namespace RRHHRecruitment.Forms.Screens
 {
@@ -39,7 +39,35 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void CreateCandidateForm_Load(object sender, System.EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                txtIdentification.ReadOnly = true;
+                txtIdentification.Text = CurrentCandidate.Identification;
+                txtDeparment.Text = CurrentCandidate.Department;
+                txtDeparment.ReadOnly = true;
+                txtName.Text = CurrentCandidate.Name;
+                txtName.ReadOnly = true;
+                txtRecommendBy.ReadOnly = true;
+                cbJob.Enabled = true;
+                txtRecommendBy.Text = CurrentCandidate.RecommendedBy;
+                cbJob.SelectedValue = CurrentCandidate.JobId;
+                txtSalary.Text = CurrentCandidate.SalaryToWhichHeAspires.ToString("C2");
+                txtSalary.ReadOnly = true;
+                metroButton8.Hide();
+                metroButton9.Text = "Aceptar";
+                _trainings.AddRange(_candidatesService.GetCandidateTrainings(CurrentCandidate.Id));
+                trainingBindingSource.DataSource = _trainings;
 
+                _languages.AddRange(_candidatesService.GetLanguages(CurrentCandidate.Id));
+                languageBindingSource.DataSource = _languages;
+                
+                _workExperiences.AddRange(_candidatesService.GetWorkExperiences(CurrentCandidate.Id));
+                workExperienceBindingSource.DataSource = _workExperiences;
+
+                _competitions.AddRange(_candidatesService.GetCompetitions(CurrentCandidate.Id));
+                competitionBindingSource.DataSource = _competitions;
+
+            }
         }
 
         private void metroButton8_Click(object sender, System.EventArgs e)
@@ -124,6 +152,12 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton9_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+                return;
+            }
             DialogResult = DialogResult.Cancel;
             Close();
 
@@ -160,6 +194,11 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
+
             var form = _container.Resolve<LanguageForm>();
 
             form.IsSelectionMode = true;
@@ -174,6 +213,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             _languages.Remove(languageBindingSource.Current as Language);
             languageBindingSource.DataSource = _languages;
             languageBindingSource.ResetBindings(true);
@@ -181,6 +224,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void btnAddTraining_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             var form = _container.Resolve<TrainingsForm>();
 
             form.IsSelectionMode = true;
@@ -196,6 +243,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             _trainings.Remove(trainingBindingSource.Current as Training);
             trainingBindingSource.DataSource = _trainings;
             trainingBindingSource.ResetBindings(true);
@@ -203,6 +254,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             var form = _container.Resolve<WorkExperienceForm>();
 
             form.IsSelectionMode = true;
@@ -217,6 +272,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton6_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             _workExperiences.Remove(workExperienceBindingSource.Current as WorkExperience);
             workExperienceBindingSource.DataSource = _workExperiences;
             workExperienceBindingSource.ResetBindings(true);
@@ -224,6 +283,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             var form = _container.Resolve<CompetitionsForm>();
 
             form.IsSelectionMode = true;
@@ -238,6 +301,10 @@ namespace RRHHRecruitment.Forms.Screens
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
+            if (CurrentCandidate != null)
+            {
+                return;
+            }
             _competitions.Remove(competitionBindingSource.Current as Competition);
             competitionBindingSource.DataSource = _competitions;
             competitionBindingSource.ResetBindings(true);
@@ -271,5 +338,6 @@ namespace RRHHRecruitment.Forms.Screens
 
             return true;
         }
+
     }
 }

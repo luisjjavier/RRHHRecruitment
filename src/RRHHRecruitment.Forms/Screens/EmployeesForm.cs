@@ -1,4 +1,6 @@
-﻿using MetroFramework.Forms;
+﻿using System.Collections.Generic;
+using MetroFramework.Forms;
+using RRHHRecruitment.Core.Models;
 using RRHHRecruitment.Core.Services;
 using Unity;
 
@@ -17,6 +19,15 @@ namespace RRHHRecruitment.Forms.Screens
             _container =  container;
 
             employeeBindingSource.DataSource = _employeeServices.GetEmployees();
+        }
+
+        private void btn_Click(object sender, System.EventArgs e)
+        {
+            List<Employee> list = _employeeServices.GetEmployees(fromDate.Value, ToDate.Value);
+            ReportForm form = _container.Resolve<ReportForm>();
+
+            form.Employees = list;
+            form.Show();
         }
     }
 }

@@ -134,6 +134,12 @@
     <Compile Include="Screens\CreateCompetition.Designer.cs">
       <DependentUpon>CreateCompetition.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\CreateEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\CreateEmployeeForm.Designer.cs">
+      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\CreateJobsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,12 @@
     <Compile Include="Screens\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\ReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\ReportForm.Designer.cs">
+      <DependentUpon>ReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\TrainingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +228,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
     <EmbeddedResource Include="Screens\CandidatesForm.resx">
       <DependentUpon>CandidatesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CreateCompetition.resx">
       <DependentUpon>CreateCompetition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\CreateEmployeeForm.resx">
+      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\CreateJobsForm.resx">
       <DependentUpon>CreateJobsForm.cs</DependentUpon>
@@ -257,6 +273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\ReportForm.resx">
+      <DependentUpon>ReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\TrainingsForm.resx">
       <DependentUpon>TrainingsForm.cs</DependentUpon>
@@ -299,9 +318,7 @@
       <Name>RRHHRecruitment.Persistence</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reports\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

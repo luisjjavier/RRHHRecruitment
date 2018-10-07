@@ -39,5 +39,29 @@ namespace RRHHRecruitment.Persistence.Repositories
                 return BasicOperationResult<Candidate>.Fail(e.ToString());
             }
         }
+
+        IEnumerable<Training> ICandidatesRepository.GetCandidateTrainings(int id)
+        {
+            return _recruitmentContext.Trainings.Where(training =>
+                training.Candidates.Any(candidate => candidate.Id == id));
         }
+
+        IEnumerable<Competition> ICandidatesRepository.GetCompetitions(int id)
+        {
+            return _recruitmentContext.Competitions.Where(training =>
+                training.Candidates.Any(candidate => candidate.Id == id));
+        }
+
+        IEnumerable<Language> ICandidatesRepository.GetLanguages(int id)
+        {
+            return _recruitmentContext.Languages.Where(training =>
+                training.Candidates.Any(candidate => candidate.Id == id));
+        }
+
+        IEnumerable<WorkExperience> ICandidatesRepository.GetWorkExperiences(int id)
+        {
+            return _recruitmentContext.WorkExperiences.Where(training =>
+                training.Candidate.Any(candidate => candidate.Id == id));
+        }
+    }
 }

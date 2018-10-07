@@ -30,5 +30,31 @@ namespace RRHHRecruitment.Core.Services
         {
             return _candidatesRepository.Update(candidate);
         }
+
+        public IEnumerable<Training> GetCandidateTrainings(int id)
+        {
+            return _candidatesRepository.GetCandidateTrainings(id);
+        }
+
+        public IEnumerable<Language> GetLanguages(int id)
+       {
+           return _candidatesRepository.GetLanguages(id);
+        }
+
+        public IEnumerable<WorkExperience> GetWorkExperiences(int id)
+        {
+            return _candidatesRepository.GetWorkExperiences(id);
+        }
+
+        public IEnumerable<Competition> GetCompetitions(int id)
+        {
+            return _candidatesRepository.GetCompetitions(id);
+        }
+
+        public IOperationResult<Candidate> DeleteCandidate(Candidate candidate)
+        {
+            candidate.IsActive = false;
+            return _candidatesRepository.Update(candidate);
+        }
     }
 }
