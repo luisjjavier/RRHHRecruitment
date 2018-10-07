@@ -41,6 +41,7 @@ namespace RRHHRecruitment.Forms.Screens
                     gestionDeUsuariosToolStripMenuItem.Visible = false;
                     gestionDePuestosToolStripMenuItem.Visible = false;
                     gestionDeCandidatosToolStripMenuItem.Visible = false;
+                    gestionDeEmpleadosToolStripMenuItem.Visible = false;
                     break;
                     default:
                     break;
